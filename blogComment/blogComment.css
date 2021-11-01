@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+header {
+    position: relative;
+    width: 1440px;
+    height: 250px;
+}
+
+.header__banner {
+    position: relative;
+    width: 100%;
+}
+
+#header--banner-img {
+    position: absolute;
+    width: 900px;
+    left: 300px;
+}
+
+header h1 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 80px;
+}
+
+.header__logOut {
+    position: relative;
+}
+
+#header--user1--img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 50px;
+}
+
+header input{
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: rgb(71, 71, 236);
+    border-radius: 5px;
+    border: none;
+    position: absolute;
+    right: 50px;
+    top: 110px;
+} 
+
+
+
+section ul{
+    display: flex;
+    height: 50px;
+    width: 900px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 10px;
+    margin-left: 300px;
+}
+
+section {
+
+    width: 1440px;
+    height: 500px;
+}
+
+section li{
+    list-style-type: none;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 75px;
+}
+
+section li a{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+#commentBox {
+    position: relative;
+    top: 50px;
+    left: 300px;
+}
+
+#sendButton {
+    position: relative;
+    top: 100px;
+    right: 230px;
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: rgb(71, 71, 236);
+    border-radius: 5px;
+    border: none;
+}

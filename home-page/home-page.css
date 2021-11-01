@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+header input{
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: rgb(71, 71, 236);
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    left: 100px;
+    top: -15px;
+}
+
+#banner{
+    margin-left: 300px;
+    width: 900px;
+}
+
+#user1{
+    position: relative;
+    top: -50px;
+    width: 100px;
+    height: 100px;
+}
+
+header h1{
+    color: white;
+    position: absolute;
+    left: 45%;
+    top: 3em;
+}
+
+main ul{
+    display: flex;
+    height: 50px;
+    width: 900px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 10px;
+    margin-left: 300px;
+}
+
+main li{
+    list-style-type: none;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 75px;
+}
+
+main li a{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+main img{
+    position: relative;
+    left: 150px;
+    top: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+#content{
+    position: relative;
+    left: 300px;
+    top: -50px;
+    width: 880px;
+    height: 190px;
+    border: green 2px solid;
+    padding: 10px;
+}
+
+main div:nth-of-type(2){
+    width: 100px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: content-box;
+    position: relative;
+    left: 1000px;
+    top: -90px;
+}
+
+main div a{
+    color: white;
+    margin-left: 10px;
+}
+
