@@ -1,7 +1,5 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
-
-
 //host info
 $host = 'localhost';
 $host_user = 'root';
@@ -12,8 +10,6 @@ $connect = mysqli_connect($host, $db_user, $db_password,$database)
 //conect fail
     or die ('Lỗi kết nối'); 
 mysqli_set_charset($connect, "utf8");
-
-
 //get data from form
 
 if(isset($_POST['dangky'])){
@@ -25,7 +21,7 @@ if(isset($_POST['dangky'])){
     
 
 
-    //import data into dp
+    //import data into db
     $sql = "SELECT * FROM USER WHERE USER = '$username' OR EMAIL='$email";
 
     $result =mysqli_query($connect,$sql);
