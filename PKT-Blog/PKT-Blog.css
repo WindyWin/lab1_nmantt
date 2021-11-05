@@ -86,7 +86,7 @@ main #user2{
     position: relative;
     left: 300px;
     top: -50px;
-    width: 880px;
+    max-width: 880px;
     height: 350px;
     border: green 2px solid;
     padding: 10px;
@@ -150,6 +150,3 @@ main div input:nth-of-type(1){
     top: 2em;
     left: 150px;
 }
-
-
-
