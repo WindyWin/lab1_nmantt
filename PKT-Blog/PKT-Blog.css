@@ -45,9 +45,6 @@ header h1{
     top: 3em;
 }
 
-header a{
-    
-}
 
 main ul{
     display: flex;
@@ -87,24 +84,27 @@ main #user2{
     left: 300px;
     top: -50px;
     max-width: 880px;
-    height: 350px;
+    height: auto;
     border: green 2px solid;
     padding: 10px;
+    padding-bottom: 20px;
     box-sizing: content-box;
 }
 
 .comment{
     position: relative;
-    top: 50px;
+    top: 0px;
     display: block;
     width: 100%;
-    height: 300px;
+    min-height: 300px;
+    height: auto;
+    max-width: 880px;
 }
 
 .comment>p{
     width: 250px;
     position: absolute;
-    left: 50%;
+    left: 100%;
     font-weight: 600;
 }
 
@@ -113,7 +113,7 @@ main #user2{
     height: 100px;
     position: absolute;
     top: 50px;
-    left: 180px;
+    left: 44%;
     text-indent: 2px;
     padding-top: 5px;
 }
@@ -122,8 +122,13 @@ main div input:nth-of-type(1){
     width: 70px;
     height: 30px;
     position: relative;
-    top: 12em;
-    left: 60em;
+    top: 14em;
+    left: 70em;
+}
+
+.CP-comment{
+    display: block;
+    margin: 100px;
 }
 
 .CP-comment #user3{
@@ -147,6 +152,10 @@ main div input:nth-of-type(1){
 }
 .old-comment{
     position: relative;
-    top: 2em;
-    left: 150px;
+    left: 100px;
+    top: 120px;
+}
+
+.insert__comment{
+    display: flex;
 }
