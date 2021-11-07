@@ -3,34 +3,46 @@
     header('Content-Type: text/html; charset=utf-8');
     //host info
     $host = 'localhost';
-    $db_user = 'root';
-    $db_password = '';
+    $host_user = 'root';
+    $host_password = '';
+    $db_name= 'demo';
     //connect db
-    $connect = mysqli_connect($host, $db_user, $db_password) 
+    $connect = mysqli_connect($host, $host_user, $host_password, $db_name) 
     //conect fail
         or die ('Lỗi kết nối'); 
+
     mysqli_set_charset($connect, "utf8");
 
-    if(isset($_POST['sign-in'])){
-        $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
-
+    if(isset($_POST['signInSubmit'])){
+        $username = addslashes($_POST['accountName']);
+        $password = addslashes($_POST['psw']);
 
         //check username and password in db
-        $sql = "SELECT * FROM USER WHERE USERNAME = '$username' AND PASSWORD = '$password'";
-        $result =mysqli_query($connect,$sql);
+        //Kiểm tra tên đăng nhập có tồn tại không
+        $query = "SELECT USERNAME, PASSWORD FROM tb_user WHERE USERNAME='$username';";
 
+        $result = mysqli_query($connect, $query) or die( mysqli_error($connect));
 
-        if(mysqli_num_rows($result) == 1 ){
-            header("Location: home-page\home-page.php");
+        if (!$result) {
+            echo "Tên đăng nhập hoặc mật khẩu không đúng!";
+        } 
+        
+        //Lấy mật khẩu trong database ra
+        $row = mysqli_fetch_array($result);
+        
+        //So sánh 2 mật khẩu có trùng khớp hay không
+        if ($password != $row['PASSWORD']) {
+            echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+            exit;
         }
-        else{
-            echo '<script>
-                alert("Tên tài khoản hoặc mật khẩu không chính xác");
-                window.location = "sign-in.php"
-            </script>;';
-        }
+        
+        //Lưu tên đăng nhập
+        $_SESSION['username'] = $username;
+        echo "Xin chào <b>" .$username . "</b>. Bạn đã đăng nhập thành công. <a href='..\home-page\home-page.html'>Thoát</a>";
+        die();
+        $connect->close();
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,13 +83,11 @@
         </form>
 
         <div class="singIn__signUp">
-            <p>Bạn chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+            <p>Bạn chưa có tài khoản? <a href="../sign-up/sign-up.php">Đăng ký ngay</a></p>
         </div>
 
 </div>
     
 </body>
-
-
 
 </html>

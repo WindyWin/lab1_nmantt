@@ -13,22 +13,23 @@
     //get data from form
 
     if(isset($_POST['dangky'])){
-        $last_name = trim($_POST['last-name']);
-        $first_name = trim($_POST['first-name']);
+        $last_name = $_POST['last-name'];
+        $first_name = $_POST['first-name'];
         $username = trim($_POST['username']);
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
-        
-
 
         //import data into db
+        //
         $sql = "SELECT * 
                 FROM tb_user 
-                WHERE USERNAME = '$username' OR EMAIL='$email";
-        $result =mysqli_query($connect,$sql);
+                WHERE USERNAME = '$username' OR EMAIL='$email';
+                ";
+        $result = mysqli_query($connect,$sql);
+    
         //check username already existed in db
         if(mysqli_num_rows($result) > 0){
-            echo    '<script>
+            echo    '<script >
                         alert("Username hoặc Email đã bị trùng!"); 
                         window.location="sign-up.php";
                     </script>';
@@ -50,8 +51,33 @@
                         '$last_name',
                         'ACTIVE')";
             mysqli_query($connect,$sql);
-            echo '<script language="javascript">alert("Đăng ký thành công!"); window.location="sign-up.php";</script>';
+            echo '<script language="javascript">
+                    alert("Đăng ký thành công!
+                        Trang sẽ tự chuyển hướng ... "); 
+                    setTimeout(() => {
+                        window.location.replace("http://localhost/lab1/Demo/sign-in/sign-in.php");
+                    }, 3000);
+                </script>';
         }
     }
-    mysqli_close($connect);
+/*
+                        _oo0oo_ 
+                       o8888888o
+                       88" . "88
+                       (| -_- |)
+                       0\  =  /0
+                     ___/`---'\___
+                   .' \|     |// '.
+                  / \|||  :  |||// \
+                 / _||||| -:- |||||- \
+                |   | \\  -  /// |   |
+                | \_|  ''\---/''  |_/ |
+                \  .-\__  '-'  ___/-. /
+              ___'. .'  /--.--\  `. .'___
+           ."" '<  `.___\_<|>_/___.' >' "".
+          | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+          \  \ `_.   \_ __\ /__ _/   .-` /  /
+      =====`-.____`.___ \_____/___.-`___.-'=====
+                        `=---='
+*/ 
 ?>
