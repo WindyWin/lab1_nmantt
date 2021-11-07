@@ -91,15 +91,6 @@ main #user2{
     box-sizing: content-box;
 }
 
-.comment{
-    position: relative;
-    top: 0px;
-    display: block;
-    width: 100%;
-    min-height: 300px;
-    height: auto;
-    max-width: 880px;
-}
 
 .comment>p{
     width: 250px;
@@ -118,7 +109,17 @@ main #user2{
     padding-top: 5px;
 }
 
-.comment__input--kai{
+.comment{
+    position: relative;
+    top: 0px;
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    height: auto;
+    max-width: 880px;
+}
+
+main form input:nth-of-type(1){
     width: 70px;
     height: 30px;
     position: relative;
