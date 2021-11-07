@@ -13,11 +13,11 @@
 
     if(isset($_POST['sign-in'])){
         $username = trim($_POST['username']);
-        $password = trim($_POST['password']);)
+        $password = trim($_POST['password']);
 
 
         //check username and password in db
-        $sql = "SELECT * FROM USER WHERE USERNAME = '$username' AND PASSWORD = '$password'"
+        $sql = "SELECT * FROM USER WHERE USERNAME = '$username' AND PASSWORD = '$password'";
         $result =mysqli_query($connect,$sql);
 
 
@@ -28,10 +28,9 @@
             echo '<script>
                 alert("Tên tài khoản hoặc mật khẩu không chính xác");
                 window.location = "sign-in.php"
-            </script>;'
+            </script>;';
         }
     }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +44,7 @@
 <body>
 <div class="signIn">
     <h1>Đăng nhập</h1>
-        <div class="signIn__quickSignIn">
+        <!-- <div class="signIn__quickSignIn">
             <div class="signIn__quickSignIn__facebook">
                 <img class="signIn__quickSignIn__facebook--img" src="facebook.svg" alt="facebook icon">
                 <input type="button" class="signIn__quickSignIn--button" id="buttonFacebook" value="Đăng nhập bằng Facebook">
@@ -54,9 +53,9 @@
                 <img class="signIn__quickSignIn__google--img" src="google.svg" alt="google icon">
                 <input type="button" class="signIn__quickSignIn--button" id="buttonGoogle" value="Đăng nhập bằng Google">
             </div>
-        </div>
+        </div> -->
 
-        <form action="" method='post'>
+        <form action="sign-in.php" method='post'>
             <div class="signIn__fillOut">
                 <div class="signIn__fillOut__account">
                     <input required type="text" id="accountName" name="accountName"  placeholder="Tài khoản">
