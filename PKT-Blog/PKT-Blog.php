@@ -13,8 +13,7 @@
     $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME FROM TB_POSTS, TB_USER WHERE TB_POSTS.ID_USER = TB_USER.ID_USER";
     $kq = $conn->query($sql);
 
-    $sql1 = "SELECT TB_COMMENT.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME FROM TB_COMMENT, TB_USER WHERE TB_COMMENT.ID_USER = TB_USER.ID_USER";
-    $kq1 = $conn->query($sql1);
+    
 ?>
 
 
@@ -58,11 +57,25 @@
                 </div>
             </div>
         <?php } ?>
-            <div class="comment">
+            <form class="comment" method="POST" action="PKT-Blog.php">
                         <p>Bình luận của bạn về bài viết</p>
                         <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Bình luận của bạn"></textarea>
-                        <input type="submit" value="Gửi">
-            </div>
+                        <input name="btn_comment" class="comment__input--kai" type="submit" value="Gửi" style="width: 70px; height: 30px; position: relative; top: 14em; left: 70em;">
+            </form>
+        <?php
+        
+            if (isset($_POST['btn_comment'])) {
+               $cmt = $_POST['comment'];
+               $sql_insert_comment = "INSERT INTO tb_comment(ID_CMT, ID_USER, ID_POSTS, CONTENT, TIME) VALUES ('autoid','2','1','$cmt', now())";
+               $kq_insert_comment = $conn->query($sql_insert_comment);
+            }
+        ?>
+
+        <?php
+            $sql1 = "SELECT TB_COMMENT.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME FROM TB_COMMENT, TB_USER WHERE TB_COMMENT.ID_USER = TB_USER.ID_USER";
+            $kq1 = $conn->query($sql1);
+        ?>
+
         <?php while ($row1 = $kq1->fetch_assoc()) { ?>
             <div class="insert__comment">
                 <div class="CP-comment">
