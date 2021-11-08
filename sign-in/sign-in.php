@@ -35,10 +35,17 @@
             echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
             exit;
         }
-        
+        //Hao bo sung session de lam comment
+        $query_all = "SELECT * FROM tb_user WHERE USERNAME='$username';";
+        $result_all = mysqli_query($connect, $query_all) or die( mysqli_error($connect));
+        $row_all = mysqli_fetch_array($result_all);
+        $_SESSION['FirstName'] = $row_all['FIRSTNAME'];
+        $_SESSION['LastName'] = $row_all['LASTNAME'];
+        $_SESSION['ID'] = $row_all['ID_USER'];
         //Lưu tên đăng nhập
         $_SESSION['username'] = $username;
-        echo "Xin chào <b>" .$username . "</b>. Bạn đã đăng nhập thành công. <a href='..\home-page\home-page.html'>Thoát</a>";
+        
+        echo "Xin chào <b>" .$_SESSION['FirstName']. "</b>. Bạn đã đăng nhập thành công. <a href='..\home-page\home-page.html'>Thoát</a>";
         die();
         $connect->close();
     }
