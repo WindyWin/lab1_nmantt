@@ -1,8 +1,9 @@
 <?php
+    session_start();
     $host = 'localhost';
     $host_user = 'root';
     $host_password = '';
-    $database = 'btth_antt';
+    $database = 'demo';
 
     $conn = new mysqli($host, $host_user, $host_password, $database);
     if (!$conn) {
@@ -66,7 +67,8 @@
         
             if (isset($_POST['btn_comment'])) {
                $cmt = $_POST['comment'];
-               $sql_insert_comment = "INSERT INTO tb_comment(ID_CMT, ID_USER, ID_POSTS, CONTENT, TIME) VALUES ('autoid','2','1','$cmt', now())";
+               $id = $_SESSION['ID'];
+               $sql_insert_comment = "INSERT INTO tb_comment(ID_CMT, ID_USER, ID_POSTS, CONTENT, TIME) VALUES ('autoid','$id','1','$cmt', now())";
                $kq_insert_comment = $conn->query($sql_insert_comment);
             }
         ?>

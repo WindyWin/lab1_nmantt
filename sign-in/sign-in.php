@@ -19,7 +19,7 @@
 
   
         //check exist username in db
-        $query = "SELECT USERNAME, PASSWORD FROM tb_user WHERE USERNAME='$username';";
+        $query = "SELECT * FROM tb_user WHERE USERNAME='$username';";
 
         $result = mysqli_query($connect, $query) or die( mysqli_error($connect));
 
@@ -35,10 +35,17 @@
             echo "Tên đăng nhập hoặc mật khẩu không đúng! <a href='javascript: history.go(-1)'>Trở lại</a>";
             exit;
         }
-        
-        //session
+        //Hao bo sung session de lam comment
+        //$query_all = "SELECT * FROM tb_user WHERE USERNAME='$username';";
+    
+
+        //Lưu thông tin người đăng nhập
+        $_SESSION['FirstName'] = $row['FIRSTNAME'];
+        $_SESSION['LastName'] = $row['LASTNAME'];
+        $_SESSION['ID'] = $row['ID_USER'];
         $_SESSION['username'] = $username;
-        echo "Xin chào <b>" .$username . "</b>. Bạn đã đăng nhập thành công. <a href='..\home-page\home-page.html'>Thoát</a>";
+        
+        echo "Xin chào <b>" .$_SESSION['FirstName']. "</b>. Bạn đã đăng nhập thành công. <a href='..\home-page\home-page.html'>Thoát</a>";
         $connect->close();
         die();
     }
