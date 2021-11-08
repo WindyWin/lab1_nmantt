@@ -58,7 +58,9 @@
                         window.location.replace("http://localhost/lab1/Demo/sign-in/sign-in.php");
                     }, 3000);
                 </script>';
-        }
+        };
+        $connect->close();
+        die();
     }
 /*
                         _oo0oo_ 

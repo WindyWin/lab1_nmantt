@@ -17,30 +17,30 @@
         $username = addslashes($_POST['accountName']);
         $password = addslashes($_POST['psw']);
 
-        //check username and password in db
-        //Kiểm tra tên đăng nhập có tồn tại không
+  
+        //check exist username in db
         $query = "SELECT USERNAME, PASSWORD FROM tb_user WHERE USERNAME='$username';";
 
         $result = mysqli_query($connect, $query) or die( mysqli_error($connect));
 
         if (!$result) {
-            echo "Tên đăng nhập hoặc mật khẩu không đúng!";
+            echo "Tên đăng nhập hoặc mật khẩu không đúng! <a href='javascript: history.go(-1)'>Trở lại</a>";
         } 
         
-        //Lấy mật khẩu trong database ra
+        //get password in db
         $row = mysqli_fetch_array($result);
         
-        //So sánh 2 mật khẩu có trùng khớp hay không
+        //compare password
         if ($password != $row['PASSWORD']) {
-            echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+            echo "Tên đăng nhập hoặc mật khẩu không đúng! <a href='javascript: history.go(-1)'>Trở lại</a>";
             exit;
         }
         
-        //Lưu tên đăng nhập
+        //session
         $_SESSION['username'] = $username;
         echo "Xin chào <b>" .$username . "</b>. Bạn đã đăng nhập thành công. <a href='..\home-page\home-page.html'>Thoát</a>";
-        die();
         $connect->close();
+        die();
     }
     
 ?>
