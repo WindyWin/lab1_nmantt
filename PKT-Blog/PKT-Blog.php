@@ -31,7 +31,7 @@
 <body>
     <header>
         <img src="banner_mini.png" alt="banner" id="banner">
-        <a href="../sign-in-page/sign-in-page.html"><input type="button" value="Đăng xuất"></a>
+        <a href="../sign-in/sign-in.php"><input type="button" value="Đăng xuất"></a>
         <img src="user1.svg" alt="user1" id="user1">
         <h1>UIBlog</h1>
     </header>

@@ -51,13 +51,11 @@
                         '$last_name',
                         'ACTIVE')";
             mysqli_query($connect,$sql);
-            echo '<script language="javascript">
-                    alert("Đăng ký thành công!
-                        Trang sẽ tự chuyển hướng ... "); 
-                    setTimeout(() => {
-                        window.location.replace("http://localhost/lab1/Demo/sign-in/sign-in.php");
-                    }, 3000);
-                </script>';
+            echo '<script>
+                alert("Bạn đã đăng ký thành công")
+                window.location= "sign-up.php"
+            </script>';
+            
         };
         $connect->close();
         die();

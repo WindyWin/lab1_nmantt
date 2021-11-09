@@ -45,12 +45,16 @@
         $_SESSION['ID'] = $row['ID_USER'];
         $_SESSION['username'] = $username;
         
-        echo "Xin chào <b>" .$_SESSION['FirstName']. "</b>. Bạn đã đăng nhập thành công. <a href='..\home-page\home-page.html'>Thoát</a>";
+        echo "<script>                    
+                window.location.replace('http://localhost/lab1/Demo/home-page/home-page.html') ;
+                window.parent.location.replace('http://localhost/lab1/Demo/home-page/home-page.html');
+            </script>";
         $connect->close();
         die();
     }
     
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,40 +65,37 @@
     <title>Document</title>
 </head>
 <body>
-<div class="signIn">
-    <h1>Đăng nhập</h1>
-        <!-- <div class="signIn__quickSignIn">
-            <div class="signIn__quickSignIn__facebook">
-                <img class="signIn__quickSignIn__facebook--img" src="facebook.svg" alt="facebook icon">
-                <input type="button" class="signIn__quickSignIn--button" id="buttonFacebook" value="Đăng nhập bằng Facebook">
-            </div>
-            <div class="signIn__quickSignIn__google">
-                <img class="signIn__quickSignIn__google--img" src="google.svg" alt="google icon">
-                <input type="button" class="signIn__quickSignIn--button" id="buttonGoogle" value="Đăng nhập bằng Google">
-            </div>
-        </div> -->
-
-        <form action="sign-in.php" method='post'>
-            <div class="signIn__fillOut">
-                <div class="signIn__fillOut__account">
-                    <input required type="text" id="accountName" name="accountName"  placeholder="Tài khoản">
-                    <input required type="password" id="psw" name="psw" placeholder="Mật khẩu">
+    <div class="signIn">
+        <h1>Đăng nhập</h1>
+            <!-- <div class="signIn__quickSignIn">
+                <div class="signIn__quickSignIn__facebook">
+                    <img class="signIn__quickSignIn__facebook--img" src="facebook.svg" alt="facebook icon">
+                    <input type="button" class="signIn__quickSignIn--button" id="buttonFacebook" value="Đăng nhập bằng Facebook">
                 </div>
-            </div>
-            <div class="singIn__further">
-                <input type="checkbox" name="Reme" id="Reme" value="password">
-                <label for="Reme">Nhớ thông tin</label>
-                <div class="singIn__further--a"><a href="#">Quên mật khẩu</a></div>
-            </div>
-            <input type="submit" name="signInSubmit" id="signInSubmit" value="Đăng nhập">
-        </form>
+                <div class="signIn__quickSignIn__google">
+                    <img class="signIn__quickSignIn__google--img" src="google.svg" alt="google icon">
+                    <input type="button" class="signIn__quickSignIn--button" id="buttonGoogle" value="Đăng nhập bằng Google">
+                </div>
+            </div> -->
+            <form action="sign-in.php" method='post'>
+                <div class="signIn__fillOut">
+                    <div class="signIn__fillOut__account">
+                        <input required type="text" id="accountName" name="accountName"  placeholder="Tài khoản">
+                        <input required type="password" id="psw" name="psw" placeholder="Mật khẩu">
+                    </div>
+                </div>
+                <div class="singIn__further">
+                    <input type="checkbox" name="Reme" id="Reme" value="password">
+                    <label for="Reme">Nhớ thông tin</label>
+                    <div class="singIn__further--a"><a href="#">Quên mật khẩu</a></div>
+                </div>
+                <input type="submit" name="signInSubmit" id="signInSubmit" value="Đăng nhập">
+            </form>
 
-        <div class="singIn__signUp">
-            <p>Bạn chưa có tài khoản? <a href="../sign-up/sign-up.php">Đăng ký ngay</a></p>
-        </div>
-
-</div>
-    
+            <div class="singIn__signUp">
+                <p>Bạn chưa có tài khoản? <a href="../sign-up/sign-up.php">Đăng ký ngay</a></p>
+            </div>
+    </div> 
 </body>
 
 </html>
