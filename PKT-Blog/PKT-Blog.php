@@ -13,7 +13,6 @@
 
     $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME FROM TB_POSTS, TB_USER WHERE TB_POSTS.ID_USER = TB_USER.ID_USER";
     $kq = $conn->query($sql);
-
     
 ?>
 
@@ -38,7 +37,7 @@
     <main>
         <ul>
             <li> <strong><a href="../home-page/home-page.html">Trang chủ</a></strong></li>
-            <li><a href="#">Bài viết của tôi</a></li>
+            <li><a href="../myBlog/myBlog.html">Bài viết của tôi</a></li>
             <li><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></li>
         </ul>
         <?php 
@@ -59,9 +58,9 @@
             </div>
         <?php } ?>
             <form class="comment" method="POST" action="PKT-Blog.php">
-                        <p>Bình luận của bạn về bài viết</p>
-                        <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Bình luận của bạn"></textarea>
-                        <input name="btn_comment" class="comment__input--kai" type="submit" value="Gửi" style="width: 70px; height: 30px; position: relative; top: 14em; left: 70em;">
+                    <p>Bình luận của bạn về bài viết</p>
+                    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Bình luận của bạn"></textarea>
+                    <input name="btn_comment" class="comment__input--kai" type="submit" value="Gửi">
             </form>
         <?php
         
@@ -70,6 +69,7 @@
                $id = $_SESSION['ID'];
                $sql_insert_comment = "INSERT INTO tb_comment(ID_CMT, ID_USER, ID_POSTS, CONTENT, TIME) VALUES ('autoid','$id','1','$cmt', now())";
                $kq_insert_comment = $conn->query($sql_insert_comment);
+               /* header("Location:PKT-Blog.php"); */
             }
         ?>
 
