@@ -37,7 +37,7 @@
     </header>
     <main>
         <ul>
-            <li> <strong><a href="./home-page.html">Trang chủ</a></strong></li>
+            <li> <strong><a href="./home-page.php">Trang chủ</a></strong></li>
             <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
             <li><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></li>
         </ul>

@@ -1,18 +1,18 @@
 <?php
-session_start();
-$host = 'localhost';
-$host_user = 'root';
-$host_password = '';
-$database = 'demo';
+    session_start();
+    $host = 'localhost';
+    $host_user = 'root';
+    $host_password = '';
+    $database = 'demo';
 
-$conn = new mysqli($host, $host_user, $host_password, $database);
-if (!$conn) {
-    die("Kết nối CSDL thất bại" . $conn->connect_error);
-}
-/* echo "Kết nối CSDL thành công"; */
-$id_u = $_SESSION['ID'];
-$sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT FROM TB_POSTS WHERE TB_POSTS.ID_USER = $id_u";
-$kq = $conn->query($sql);
+    $conn = new mysqli($host, $host_user, $host_password, $database);
+    if (!$conn) {
+        die("Kết nối CSDL thất bại" . $conn->connect_error);
+    }
+    /* echo "Kết nối CSDL thành công"; */
+    $id_u = $_SESSION['ID'];
+    $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT FROM TB_POSTS WHERE TB_POSTS.ID_USER = $id_u";
+    $kq = $conn->query($sql);
 
 ?>
 
@@ -42,13 +42,12 @@ $kq = $conn->query($sql);
     <section>
         <ul>
             <li><a href="../home-page/home-page.php">Trang chủ</a></li>
-            <li><strong><a href="./myBlog.html">Bài viết của tôi</a></strong></li>
+            <li><strong><a href="./myBlog.php">Bài viết của tôi</a></strong></li>
             <li><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></li>
         </ul>
         <?php while ($row = $kq->fetch_assoc()) { ?>
         <div id="contentBox">
             <div class="section_box">
-                
                     <p id="content">
                         <strong>Tên bài biết: <?php echo $row["POST_NAME"]; ?> <br>
                             Ngày đăng bài: <?php echo $row["TIME"]; ?></strong> <br>
@@ -57,7 +56,7 @@ $kq = $conn->query($sql);
                 
             </div>
             <div class="section__buttonInside">
-                <input type="button" onclick="document.getElementById('content').contentEditable='true';" value="Chỉnh sửa" id="editButton">
+                <input type="button" onclick="editContent()" value="Chỉnh sửa" id="editButton">
                 <input type="button" onclick="removeContent()" value="Xóa" id="deleteButton">
             </div>
         </div>
@@ -69,6 +68,9 @@ $kq = $conn->query($sql);
         function removeContent() {
             var elem = document.getElementById('contentBox');
             elem.parentNode.removeChild(elem);
+        }
+        function editContent() {
+            document.getElementById('content').contentEditable='true';
         }
     </script>
 
