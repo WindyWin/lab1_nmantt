@@ -9,7 +9,7 @@ main{
     background: #f1f1f1;
     border-radius: 15px;
     position: absolute;
-    left: 500px;
+    padding-top: 1px;
 }
 
 main h1{
