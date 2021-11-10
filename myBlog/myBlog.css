@@ -93,7 +93,8 @@ section li a{
     left: 300px;
     top: 30px;
     width: 900px;
-    height: 300px;
+    min-height: 200px;
+    height: auto;
     border: green 2px solid;
     padding: 10px 0 10px 0;
 }
