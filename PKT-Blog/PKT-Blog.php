@@ -13,7 +13,6 @@
     $id_post = intval($_GET['id']);
     $sql = "SELECT * FROM TB_POSTS, TB_USER WHERE ID_POSTS = $id_post AND TB_POSTS.ID_USER = TB_USER.ID_USER";
     $kq = $conn->query($sql);
-    
 ?>
 
 
@@ -57,7 +56,7 @@
                 </div>
             </div>
         <?php } ?>
-            <form class="comment" method="POST" action="PKT-Blog.php">
+            <form class="comment" method="POST" action="PKT-Blog.php?id=<?php echo $id_post ?>">
                     <p>Bình luận của bạn về bài viết</p>
                     <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Bình luận của bạn"></textarea>
                     <input name="btn_comment" class="comment__input--kai" type="submit" value="Gửi">
@@ -67,7 +66,7 @@
             if (isset($_POST['btn_comment'])) {
                $cmt = $_POST['comment'];
                $id = $_SESSION['ID'];
-               $sql_insert_comment = "INSERT INTO tb_comment(ID_CMT, ID_USER, ID_POSTS, CONTENT, TIME) VALUES ('autoid','$id','1','$cmt', now())";
+               $sql_insert_comment = "INSERT INTO tb_comment(ID_CMT, ID_USER, ID_POSTS, CONTENT, TIME) VALUES ('autoid','$id','$id_post','$cmt', now())";
                $kq_insert_comment = $conn->query($sql_insert_comment);
                /* header("Location:PKT-Blog.php"); */
             }
