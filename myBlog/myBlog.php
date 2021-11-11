@@ -1,5 +1,12 @@
 <?php
     session_start();
+
+    //Nếu chưa đăng nhập chuyển hướng san trang đăng nhập 
+    if(empty($_SESSION['username'])){
+        session_destroy();
+    header('location: http://localhost/lab1_nmantt/main-page/main-page.php');
+    };
+
     $host = 'localhost';
     $host_user = 'root';
     $host_password = '';
@@ -36,7 +43,7 @@
         </div>
         <div class="header__logOut">
             <img src="user1.svg" alt="user1" id="header--user1--img">
-            <input type="button" value="Đăng xuất" id="btn_logout" onclick="logout()">
+            <a href="../logout.php"><input type="button" value="Đăng xuất" id="btn_logout" ></a>
         </div>
     </header>
     <section>

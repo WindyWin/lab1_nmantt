@@ -15,7 +15,7 @@
         </div>
         <div class="header__logOut">
         <img src="user1.svg" alt="user1" id="header--user1--img">
-        <input id="btn_logout" type="button" value="Đăng xuất" onclick="logout()">
+        <a href="../logout.php"><input id="btn_logout" type="button" value="Đăng xuất" ></a>
         </div>
     </header>
     <section>
@@ -24,7 +24,7 @@
             <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
             <li><strong><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></strong></li>
         </ul>
-    <textarea required id="commentBox" placeholder="Bạn đang nghĩ gì ?" style="height:250px; width:900px; border-color: rgb(36, 100, 219);"></textarea>
+    <textarea autofocus required id="commentBox" placeholder="Bạn đang nghĩ gì ?" style="height:250px; width:900px; border-color: rgb(36, 100, 219);"></textarea>
     <input type="submit" value="Gửi" id="sendButton" onclick="show_thank()">
     </section>
 

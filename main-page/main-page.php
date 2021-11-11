@@ -1,8 +1,8 @@
 <?php
     session_start();
     if (isset($_SESSION['username']) && $_SESSION['username'] != NULL) {
-        session_destroy();
-    }
+        header('location: http://localhost/lab1_nmantt/home-page/home-page.php');
+    };
 ?>
 
 
