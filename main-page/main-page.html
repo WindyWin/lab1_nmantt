@@ -19,10 +19,10 @@
             thông tin về các món ẩm thực ngon.</p>
         <input onclick="openSignInOvp()" type="button" id="sign-in" value="Đăng nhập">
         <input onclick="openSignUpOvp()" type="button" id="sign-up" value="Đăng ký">
-        <div id="overplay">
-            <div id="overplay-background"></div>
-            <iframe id="sign-in__overplay" src="../sign-in/sign-in.php" width="420px" height="620px" frameborder="0"></iframe>
-            <iframe id="sign-up__overplay" src="../sign-up/sign-up.php" width="420px" height="620px" frameborder="0"></iframe>
+        <div id="overlay">
+            <div id="overlay-background"></div>
+            <iframe id="sign-in__overlay" src="../sign-in/sign-in.php" width="420px" height="620px" frameborder="0"></iframe>
+            <iframe id="sign-up__overlay" src="../sign-up/sign-up.php" width="420px" height="620px" frameborder="0"></iframe>
         </div>
     </main>
 
@@ -100,31 +100,31 @@
     </footer>
 </body>
 <script>
-    const overplayBackground = document.getElementById('overplay-background')
-    const signInOverplay = document.getElementById('sign-in__overplay')
-    const signUpOverplay = document.getElementById('sign-up__overplay')
+    const overlayBackground = document.getElementById('overlay-background')
+    const signInOverlay = document.getElementById('sign-in__overlay')
+    const signUpOverlay = document.getElementById('sign-up__overlay')
 
-    //Event when click overplay background 
-    overplayBackground.addEventListener('click',()=>{
-        // hidden overplay windows
-        overplayBackground.style.display = 'none'
-        signInOverplay.style.display = 'none'
-        signUpOverplay.style.display = 'none'
+    //Event when click overlay background 
+    overlayBackground.addEventListener('click',()=>{
+        // hidden overlay windows
+        overlayBackground.style.display = 'none'
+        signInOverlay.style.display = 'none'
+        signUpOverlay.style.display = 'none'
         
         //reload iframe
-        signInOverplay.setAttribute('src','../sign-in/sign-in.php')
-        signUpOverplay.setAttribute('src','../sign-up/sign-up.php')
+        signInOverlay.setAttribute('src','../sign-in/sign-in.php')
+        signUpOverlay.setAttribute('src','../sign-up/sign-up.php')
     })
     
     //sign in button clicking evt
     function openSignInOvp(){
-        overplayBackground.style.display = 'block'
-        signInOverplay.style.display = 'block'
+        overlayBackground.style.display = 'block'
+        signInOverlay.style.display = 'block'
     }
     //sign un button clicking evt
     function openSignUpOvp(){
-        overplayBackground.style.display = 'block'
-        signUpOverplay.style.display = 'block'
+        overlayBackground.style.display = 'block'
+        signUpOverlay.style.display = 'block'
     }
 </script>
 </html>
