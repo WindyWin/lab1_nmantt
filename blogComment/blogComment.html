@@ -15,17 +15,36 @@
         </div>
         <div class="header__logOut">
         <img src="user1.svg" alt="user1" id="header--user1--img">
-        <input type="button" value="Đăng xuất">
+        <input id="btn_logout" type="button" value="Đăng xuất" onclick="logout()">
         </div>
     </header>
     <section>
         <ul>
-            <li><a href="../home-page/home-page.html">Trang chủ</a></li>
-            <li><a href="#">Bài viết của tôi</a></li>
+            <li><a href="../home-page/home-page.php">Trang chủ</a></li>
+            <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
             <li><strong><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></strong></li>
         </ul>
-    <textarea id="commentBox" placeholder="Bạn đang nghĩ gì ?" style="height:250px; width:900px; border-color: rgb(36, 100, 219);"></textarea>
-    <input type="submit" value="Gửi" id="sendButton">
+    <textarea required id="commentBox" placeholder="Bạn đang nghĩ gì ?" style="height:250px; width:900px; border-color: rgb(36, 100, 219);"></textarea>
+    <input type="submit" value="Gửi" id="sendButton" onclick="show_thank()">
     </section>
+
+    <div class="responseBox">
+        <img src="checked_tick.svg" alt="checked_tick">
+        <p>Cảm ơn vì ý kiến đóng góp của bạn</p>
+    </div>
+
+    <script src="../logout.js"></script>
+    <script>
+        let show_response = document.querySelector(".responseBox");
+        let content_box = document.querySelector("#commentBox");
+        function show_thank() {
+            show_response.style.display = "block";
+            content_box.value = "";
+            setTimeout(hidden_thank, 1500);
+        }
+        function hidden_thank() {
+            show_response.style.display = "none";
+        }
+    </script>
 </body>
 </html>

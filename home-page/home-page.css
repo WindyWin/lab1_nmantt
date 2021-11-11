@@ -31,7 +31,6 @@ header input{
     width: 100px;
     height: 100px;
 }
-
 header h1{
     color: white;
     position: absolute;
@@ -64,38 +63,66 @@ main li a{
     text-align: center;
 }
 
-main img{
+#content{
+    max-width: 880px;
+    height: auto;
+    margin: 0px auto;
     position: relative;
-    left: 150px;
-    top: 50px;
+    margin-top: 25px;
+    border: green 2px solid;
+    padding: 20px;
+}
+.content__avt{
     width: 100px;
     height: 100px;
+    position: absolute;
+    left: -15%;
+}
+
+#content a {
+    width: 100px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    left: 80%;
+}
+
+/* .home_page-wapper{
+    position: relative;
+    left: 300px;
+    top: 10px;
+    max-width: 880px;
+    height: auto;
+}
+
+#content img{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50px;
+    left: -13%;
 }
 
 #content{
-    position: relative;
-    left: 300px;
-    top: -50px;
-    width: 880px;
-    height: 190px;
+    position: absolute;
     border: green 2px solid;
     padding: 10px;
 }
 
-main div:nth-of-type(2){
+#content a{
     width: 100px;
     background-color: green;
     border: none;
     border-radius: 5px;
     padding: 10px;
     box-sizing: content-box;
-    position: relative;
-    left: 1000px;
-    top: -90px;
-}
-
-main div a{
+    position: absolute;
+    text-align: center;
     color: white;
-    margin-left: 10px;
-}
-
+    margin-left: 80%;
+    margin-top: 3%;
+} */

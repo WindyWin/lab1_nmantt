@@ -105,3 +105,28 @@ section li a{
     border-radius: 5px;
     border: none;
 }
+
+.responseBox {
+    width: 400px;
+    height: 164px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin: 0px auto;
+    display: none;
+}
+
+.responseBox img {
+    height: 90px;
+    width: 90px;
+    margin: 10px 155px;
+}
+
+.responseBox p {
+    text-align: center;
+    font-weight: bold;
+}

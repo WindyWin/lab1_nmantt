@@ -46,8 +46,8 @@
         $_SESSION['username'] = $username;
         
         echo "<script>                    
-                window.location.replace('http://localhost/lab1/Demo/home-page/home-page.html') ;
-                window.parent.location.replace('http://localhost/lab1/Demo/home-page/home-page.html');
+                window.location.replace('http://localhost/lab1_nmantt/home-page/home-page.php') ;
+                window.parent.location.replace('http://localhost/lab1_nmantt/home-page/home-page.php');
             </script>";
         $connect->close();
         die();

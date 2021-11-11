@@ -10,11 +10,9 @@
         die("Kết nối CSDL thất bại".$conn->connect_error);
     }
     /* echo "Kết nối CSDL thành công"; */
-
-    $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME FROM TB_POSTS, TB_USER WHERE TB_POSTS.ID_USER = TB_USER.ID_USER";
+    $id_post = intval($_GET['id']);
+    $sql = "SELECT * FROM TB_POSTS, TB_USER WHERE ID_POSTS = $id_post AND TB_POSTS.ID_USER = TB_USER.ID_USER";
     $kq = $conn->query($sql);
-
-    
 ?>
 
 
@@ -31,14 +29,14 @@
 <body>
     <header>
         <img src="banner_mini.png" alt="banner" id="banner">
-        <a href="../sign-in/sign-in.php"><input type="button" value="Đăng xuất"></a>
+        <a><input type="button" value="Đăng xuất" id="btn_logout" onclick="logout()"></a>
         <img src="user1.svg" alt="user1" id="user1">
         <h1>UIBlog</h1>
     </header>
     <main>
         <ul>
-            <li> <strong><a href="../home-page/home-page.html">Trang chủ</a></strong></li>
-            <li><a href="#">Bài viết của tôi</a></li>
+            <li> <strong><a href="../home-page/home-page.php">Trang chủ</a></strong></li>
+            <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
             <li><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></li>
         </ul>
         <?php 
@@ -58,23 +56,24 @@
                 </div>
             </div>
         <?php } ?>
-            <form class="comment" method="POST" action="PKT-Blog.php">
-                        <p>Bình luận của bạn về bài viết</p>
-                        <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Bình luận của bạn"></textarea>
-                        <input name="btn_comment" class="comment__input--kai" type="submit" value="Gửi" style="width: 70px; height: 30px; position: relative; top: 14em; left: 70em;">
+            <form class="comment" method="POST" action="PKT-Blog.php?id=<?php echo $id_post ?>">
+                    <p>Bình luận của bạn về bài viết</p>
+                    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Bình luận của bạn"></textarea>
+                    <input name="btn_comment" class="comment__input--kai" type="submit" value="Gửi">
             </form>
         <?php
         
             if (isset($_POST['btn_comment'])) {
                $cmt = $_POST['comment'];
                $id = $_SESSION['ID'];
-               $sql_insert_comment = "INSERT INTO tb_comment(ID_CMT, ID_USER, ID_POSTS, CONTENT, TIME) VALUES ('autoid','$id','1','$cmt', now())";
+               $sql_insert_comment = "INSERT INTO tb_comment(ID_CMT, ID_USER, ID_POSTS, CONTENT, TIME) VALUES ('autoid','$id','$id_post','$cmt', now())";
                $kq_insert_comment = $conn->query($sql_insert_comment);
+               /* header("Location:PKT-Blog.php"); */
             }
         ?>
 
         <?php
-            $sql1 = "SELECT TB_COMMENT.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME FROM TB_COMMENT, TB_USER WHERE TB_COMMENT.ID_USER = TB_USER.ID_USER";
+            $sql1 = "SELECT * FROM TB_COMMENT, TB_USER WHERE TB_COMMENT.ID_USER = TB_USER.ID_USER AND ID_POSTS = $id_post";
             $kq1 = $conn->query($sql1);
         ?>
 
@@ -88,5 +87,6 @@
             </div>
         <?php }?>
     </main>
+    <script src="../logout.js"></script>
 </body>
 </html>
