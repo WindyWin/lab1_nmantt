@@ -36,6 +36,29 @@
 </head>
 
 <body>
+    <div class="background" id="background" onclick="createForm()"></div>
+    <div class="container" id="container">
+
+        <form action="myBlog.php" id="AddBlog" method="POST">
+            <button id="exit">X</button>
+            <h1>WRITE YOUR BLOG</h1>
+            <label for="BlogName">Your blog name:</label><br>
+            <input type="text" id="blogName" name="blogName"><br>
+            <label for="yourContent">Your content:</label><br>
+            <textarea name="yourContent" id="yourContent" cols="30" rows="10"></textarea><br>
+            <input type="submit" value="Post" name="submit">
+            <?php
+                if (isset($_POST["submit"])) {
+                    $id = $_SESSION['ID'];
+                    $title = $_POST['blogName'];
+                    $content = $_POST['yourContent'];
+                    $sql_insert_post = "INSERT INTO tb_posts(ID_POSTS, ID_USER, CONTENT, TIME, POST_NAME) VALUES ('autoid','$id','$content',now(),'$title')";
+                    $kq_insert_post = $conn->query($sql_insert_post);
+                    header("Location:myBlog.php");
+                }
+            ?>
+        </form>
+    </div>
     <header>
         <div class="header__banner">
             <img src="banner_mini.png" alt="banner_mini" id="header--banner-img">
@@ -58,12 +81,12 @@
         <?php while ($row = $kq->fetch_assoc()) { ?>
         <div id="contentBox">
             <div class="section_box">
-                    <p id="content">
-                        <strong>Tên bài biết: <?php echo $row["POST_NAME"]; ?> <br>
-                            Ngày đăng bài: <?php echo $row["TIME"]; ?></strong> <br>
-                        <?php echo $row["CONTENT"]; ?>
-                    </p>
-                
+                <p id="content">
+                    <strong>Tên bài biết: <?php echo $row["POST_NAME"]; ?> <br>
+                        Ngày đăng bài: <?php echo $row["TIME"]; ?></strong> <br>
+                    <?php echo $row["CONTENT"]; ?>
+                </p>
+
             </div>
             <div class="section__buttonInside">
                 <input type="button" onclick="editContent()" value="Chỉnh sửa" id="editButton">
@@ -79,11 +102,29 @@
             var elem = document.getElementById('contentBox');
             elem.parentNode.removeChild(elem);
         }
+
         function editContent() {
-            document.getElementById('content').contentEditable='true';
+            document.getElementById('content').contentEditable = 'true';
         }
     </script>
+    <script>
+        const newBlog = document.getElementById("container");
+        const exit = document.getElementById("exit");
+        const blog = document.getElementById("buttonOutside");
+        const background = document.getElementById("background");
 
+        function removeContent() {
+            var elem = document.getElementById('contentBox');
+            elem.parentNode.removeChild(elem);
+        }
+        blog.onclick = createForm;
+        exit.onclick = createForm;
+
+        function createForm() {
+            background.classList.toggle("background-opacity");
+            newBlog.classList.toggle("overlay-form");
+        }
+    </script>
     <script src="../logout.js"></script>
 </body>
 
