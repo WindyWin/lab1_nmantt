@@ -17,7 +17,7 @@ header input{
     border: none;
     position: relative;
     left: 100px;
-    top: -15px;
+    top: 0px;
 }
 
 #banner{
@@ -27,9 +27,15 @@ header input{
 
 #user1{
     position: relative;
-    top: -50px;
+    top: -70px;
     width: 100px;
     height: 100px;
+}
+#username{
+    position: absolute;
+    top: 130px;
+    right: 160px;
+    transform: translateX(50%);
 }
 header h1{
     color: white;

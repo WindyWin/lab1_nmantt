@@ -43,6 +43,9 @@
         </div>
         <div class="header__logOut">
             <img src="user1.svg" alt="user1" id="header--user1--img">
+            <?php 
+                echo "<strong id='username'>".$_SESSION["username"]."</strong>"; 
+            ?> 
             <a href="../logout.php"><input type="button" value="Đăng xuất" id="btn_logout" ></a>
         </div>
     </header>
@@ -50,7 +53,7 @@
         <ul>
             <li><a href="../home-page/home-page.php">Trang chủ</a></li>
             <li><strong><a href="./myBlog.php">Bài viết của tôi</a></strong></li>
-            <li><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></li>
+            <li><a href="../blogComment/blogComment.php">Đóng góp & ý kiến</a></li>
         </ul>
         <?php while ($row = $kq->fetch_assoc()) { ?>
         <div id="contentBox">

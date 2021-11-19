@@ -39,13 +39,16 @@
         <img src="banner_mini.png" alt="banner" id="banner">
         <a href="../logout.php"><input type="button" value="Đăng xuất" id="btn_logout" ></a>
         <img src="user1.svg" alt="user1" id="user1">
+        <?php 
+            echo "<strong id='username'>".$_SESSION["username"]."</strong>"; 
+        ?> 
         <h1>UIBlog</h1>
     </header>
     <main>
         <ul>
             <li> <strong><a href="../home-page/home-page.php">Trang chủ</a></strong></li>
             <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
-            <li><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></li>
+            <li><a href="../blogComment/blogComment.php">Đóng góp & ý kiến</a></li>
         </ul>
         <?php 
             while ($row = $kq->fetch_assoc()) {?>
