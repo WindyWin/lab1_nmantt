@@ -17,22 +17,20 @@
         die("Kết nối CSDL thất bại" . $conn->connect_error);
     }
     /* echo "Kết nối CSDL thành công"; */
-    if(isset($_POST['send'])){
-        $content = addslashes($_POST['content']);
-        $user_id = addslashes($_SESSION['ID']);
+    if(isset($_POST['feedback'])){
+        $content = $_POST['content'];
+        $user_id = $_SESSION['ID'];
 
-        $sql = "IMSERT INTO `tb_feedback` 
-                    (`ID_USER`,
-                    `CONTENT`,
-                    `TIME`) 
-                VALUES (
-                    (
-                        '$user_id',
-                        '$content',
-                        now()
-                    )
-                )";
+        $sql = "INSERT INTO tb_feedback 
+                    (ID_USER,CONTENT,TIME) 
+                VALUES 
+                    ('$user_id','$content',now())";
         $kq = $conn->query($sql);
+        if($kq){
+            echo "<script>
+                show_thank();
+            </script>";
+        };
     }
 
 ?>
@@ -60,7 +58,8 @@
         </div>
     </header>
     <section>
-        <form action="blogComment.php" method="post" onsubmit="return false;show_thank()">
+
+        <form action="blogComment.php" method="post">
             <ul>
                 <li><a href="../home-page/home-page.php">Trang chủ</a></li>
                 <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
@@ -68,7 +67,7 @@
             </ul>
             <textarea autofocus required name="content" id="commentBox" placeholder="Bạn đang nghĩ gì ?"
                 style="height:250px; width:900px; border-color: rgb(36, 100, 219);"></textarea>
-            <input type="submit" value="Gửi" name="send" id="sendButton" >
+            <input type="submit" value="Gửi" name="feedback" id="sendButton" >
         </form>
     </section>
 
@@ -85,6 +84,7 @@
             show_response.style.display = "block";
             content_box.value = "";
             setTimeout(hidden_thank, 1500);
+            return false;
         }
         function hidden_thank() {
             show_response.style.display = "none";
