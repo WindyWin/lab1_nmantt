@@ -98,6 +98,6 @@
             </div>
         <?php }?>
     </main>
-    <script src="../logout.js"></script>
+
 </body>
 </html>
