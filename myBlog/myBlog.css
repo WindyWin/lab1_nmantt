@@ -143,4 +143,93 @@ section li a{
     border: none;
 }
 
- 
+.container {
+    width: 1000px;
+    height: 500px;
+    margin: 0px auto;
+    background-color: rgb(241, 241, 241);
+    border-radius: 10px;
+    transform: translate(-50%,-50%);
+    display: none;
+    padding: 10px auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.background{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: none;
+}
+
+.container #exit {
+    border-radius: 80%;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    float: right;
+    margin: 5px 5px;
+}
+
+#exit:hover{
+    cursor: pointer;
+}
+
+.container form {
+    width: 100%;
+    margin: auto;
+}
+
+.container h1 {
+    text-align: center;
+    padding: auto;
+}
+
+.container #blogName {
+    width: 80%;
+    height: 20px;
+    margin-left: 90px;
+}
+
+.container #yourContent {
+    padding: 0 auto;
+    width: 80%;
+    height: 300px;
+    margin-left: 90px;
+}
+
+.container input[type=text], #yourContent {
+    border-color: rgb(71, 71, 236);
+    border-radius: 2px;
+}
+
+.container input[type=submit] {
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: rgb(71, 71, 236);
+    border-radius: 5px;
+    border: none;
+    float: right;
+    margin-right: 105px;
+}
+
+.container label {
+    font-size: 20px;
+    margin-left: 90px;
+}
+
+.overlay-form {
+    display: block;
+    z-index: 3;
+}
+
+.background-opacity{
+    z-index: 2;
+    display: block;
+    opacity: 0.5;
+    background-color: #4b4b4b;
+}
+
