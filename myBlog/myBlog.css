@@ -114,7 +114,9 @@ section li a{
     border-radius: 5px;
     border: none;
     max-width: 200px;
-    
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
 }
 #content {
     padding-bottom: 60px;
@@ -130,6 +132,9 @@ section li a{
     border: none;
     position: absolute;
     left: 150px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
 }
 
 #buttonOutside {
@@ -158,10 +163,14 @@ section li a{
 }
 
 .background{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     position: absolute;
     display: none;
+}
+
+#exit:hover{
+    cursor: pointer;
 }
 
 .container #exit {
@@ -171,10 +180,6 @@ section li a{
     border: 2px solid black;
     float: right;
     margin: 5px 5px;
-}
-
-#exit:hover{
-    cursor: pointer;
 }
 
 .container form {
@@ -232,4 +237,42 @@ section li a{
     opacity: 0.5;
     background-color: #4b4b4b;
 }
+.section__edit {
+    position: absolute;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 330px;
+}
+.section__edit h1 {
+    margin-bottom: 15px;
+}
+#edit__title {
+    border: 1px solid green;
+    margin-bottom: 10px;
+    width: 800px;
+    min-height: 30px;
+}
+#edit__title:focus{
+    outline: none;
+}
 
+#edit__content{
+    border: 1px solid green;
+    margin-bottom: 10px;
+    width: 800px;
+    min-height: 250px;
+}
+
+#edit__content:focus{
+    outline: none;
+}
+
+.btn__edit input {
+    padding: 10px;
+    color: white;
+    background-color: rgb(71, 71, 236);
+    border-radius: 5px;
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
