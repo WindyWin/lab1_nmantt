@@ -24,7 +24,10 @@
         $result = mysqli_query($connect, $query) or die( mysqli_error($connect));
 
         if (!$result) {
-            echo "Tên đăng nhập hoặc mật khẩu không đúng! <a href='javascript: history.go(-1)'>Trở lại</a>";
+            echo "<script>
+                alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+                window.location= 'sign-in.php'
+            </script>";
         } 
         
         //get password in db
@@ -32,7 +35,10 @@
         
         //compare password
         if ($password != $row['PASSWORD']) {
-            echo "Tên đăng nhập hoặc mật khẩu không đúng! <a href='javascript: history.go(-1)'>Trở lại</a>";
+            echo "<script>
+                alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+                window.location= 'sign-in.php'
+            </script>";
             exit;
         }
         //Hao bo sung session de lam comment

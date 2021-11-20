@@ -1,5 +1,13 @@
 <?php
     session_start();
+
+    //Nếu chưa đăng nhập chuyển hướng san trang đăng nhập 
+    if(empty($_SESSION['username'])){
+        session_destroy();
+    header('location: http://localhost/lab1_nmantt/main-page/main-page.php');
+    };
+    
+
     $host = 'localhost';
     $host_user = 'root';
     $host_password = '';
@@ -29,15 +37,18 @@
 <body>
     <header>
         <img src="banner_mini.png" alt="banner" id="banner">
-        <a><input type="button" value="Đăng xuất" id="btn_logout" onclick="logout()"></a>
+        <a href="../logout.php"><input type="button" value="Đăng xuất" id="btn_logout" ></a>
         <img src="user1.svg" alt="user1" id="user1">
+        <?php 
+            echo "<strong id='username'>".$_SESSION["username"]."</strong>"; 
+        ?> 
         <h1>UIBlog</h1>
     </header>
     <main>
         <ul>
             <li> <strong><a href="../home-page/home-page.php">Trang chủ</a></strong></li>
             <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
-            <li><a href="../blogComment/blogComment.html">Đóng góp & ý kiến</a></li>
+            <li><a href="../blogComment/blogComment.php">Đóng góp & ý kiến</a></li>
         </ul>
         <?php 
             while ($row = $kq->fetch_assoc()) {?>
@@ -87,6 +98,6 @@
             </div>
         <?php }?>
     </main>
-    <script src="../logout.js"></script>
+
 </body>
 </html>
