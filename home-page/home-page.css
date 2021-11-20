@@ -96,6 +96,12 @@ main li a{
     color: white;
     left: 80%;
 }
+.form-control {
+    margin-top: 10px;
+    width: 200px;
+    margin-left: 300px;
+    margin-bottom: 10px;
+}
 
 /* .home_page-wapper{
     position: relative;
