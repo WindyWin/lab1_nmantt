@@ -1,12 +1,5 @@
 <?php
     session_start();
-
-    //Nếu chưa đăng nhập chuyển hướng san trang đăng nhập 
-    if(empty($_SESSION['username'])){
-        session_destroy();
-    header('location: http://localhost/lab1_nmantt/main-page/main-page.php');
-    };
-
     $host = 'localhost';
     $host_user = 'root';
     $host_password = '';
@@ -18,7 +11,7 @@
     }
     /* echo "Kết nối CSDL thành công"; */
     $id_u = $_SESSION['ID'];
-    $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT FROM TB_POSTS WHERE TB_POSTS.ID_USER = $id_u";
+    $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT, TB_POSTS.ID_POSTS FROM TB_POSTS WHERE TB_POSTS.ID_USER = $id_u";
     $kq = $conn->query($sql);
 
 ?>
@@ -66,10 +59,7 @@
         </div>
         <div class="header__logOut">
             <img src="user1.svg" alt="user1" id="header--user1--img">
-            <?php 
-                echo "<strong id='username'>".$_SESSION["username"]."</strong>"; 
-            ?> 
-            <a href="../logout.php"><input type="button" value="Đăng xuất" id="btn_logout" ></a>
+            <input type="button" value="Đăng xuất" id="btn_logout" onclick="logout()">
         </div>
     </header>
     <section>
@@ -89,15 +79,15 @@
 
             </div>
             <div class="section__buttonInside">
-                <input type="button" onclick="editContent()" value="Chỉnh sửa" id="editButton">
-                <input type="button" onclick="removeContent()" value="Xóa" id="deleteButton">
+                <a href="update.php?id=<?php echo $row["ID_POSTS"]; ?>" id="editButton">Chỉnh sửa</a>
+                <a href="delete.php?id=<?php echo $row["ID_POSTS"]; ?>" id="deleteButton">Xóa</a>
             </div>
         </div>
         <?php } ?>
         <input type="button" value="Thêm bài viết" id="buttonOutside">
     </section>
 
-    <script>
+    <!-- <script>
         function removeContent() {
             var elem = document.getElementById('contentBox');
             elem.parentNode.removeChild(elem);
@@ -106,7 +96,7 @@
         function editContent() {
             document.getElementById('content').contentEditable = 'true';
         }
-    </script>
+    </script> -->
     <script>
         const newBlog = document.getElementById("container");
         const exit = document.getElementById("exit");
