@@ -22,24 +22,7 @@
     $kq = $conn->query($sql);
     
 ?>
-<?php
-    function execute($sql) {
-        $conn = mysqli_connect(host, host_user, host_password, database);
-        mysqli_query($conn, $sql);
-        mysqli_close($conn);
-    }
-?>
-<?php
-    function executeResult($sql) {
-        $conn = mysqli_connect(host, host_user, host_password, database);
-        
-        $resultset =  mysqli_query($conn, $sql);
-        $list = [];
-        while($row = mysqli_fetch_array($resultset, 1))
-        mysqli_close($conn);
-        return $list;
-    }
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,26 +49,39 @@
     <main>
     <form method="GET">
         <input type="text" name="content" class="form-control" placeholder="Tên bài viết">
-        <button>Search</button>
+        <button name="btn-search">Search</button>
+
     </form>
         <ul>
             <li> <strong><a href="./home-page.php">Trang chủ</a></strong></li>
             <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
             <li><a href="../blogComment/blogComment.php">Đóng góp & ý kiến</a></li>
         </ul>
-            <div id="content">
-                <img class="content__avt" src="user2.svg" alt="user2">
-            <?php
+        <?php
             if(isset($_GET["content"]) && $_GET["content"] =! '') {
-                $sql = 'select * from tb_posts where POST_NAME like "%'.$_GET["content"].'%"';
+                $sql_search = 'select * from tb_posts where POST_NAME like "%'.$_GET["content"].'%"';
             } else {
-                $sql= 'select * from tb_posts';  
+                $sql_search = 'select * from tb_posts';
             }
-            $inlist = executeResult($sql);
-
-            foreach($inlist as $std) {
-                echo '<p><strong>'Tên bài viết: .$std['POST_NAME'];
-            </div>
+            $kq_search =  $conn->query($sql_search);
+        ?>
+        <?php while ($row = $kq_search->fetch_assoc()) {?>
+            <div id="content">
+                    <img class="content__avt" src="user2.svg" alt="user2">
+                    <p><strong>Tên bài viết: <?php echo $row["POST_NAME"]; ?><br>Tác giả: <?php echo $row["FIRSTNAME"]." ".$row["LASTNAME"]; ?> <br>Ngày đăng bài: <?php echo $row["TIME"]; ?></strong></p><br>
+                    <?php
+                        /* echo "<script>alert(".str_word_count($cnt).")</script>" */
+                        if(str_word_count($row["CONTENT"]) > 100) {
+                            $cnt = substr($row["CONTENT"], 0, 900);
+                            echo "<p>".$cnt."..."."</p>";
+                        }
+                        else {
+                            echo "<p>".$row["CONTENT"]."</p>";
+                        }
+                    ?>
+                    <a href="../PKT-Blog/PKT-Blog.php?id=<?php echo $row["ID_POSTS"]; ?>"> Xem bài viết</a>
+                </div>
+        <?php } ?>
     </main>
     <script src="../logout.js"></script>
 </body>
