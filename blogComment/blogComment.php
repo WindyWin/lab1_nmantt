@@ -54,6 +54,9 @@
         </div>
         <div class="header__logOut">
             <img src="user1.svg" alt="user1" id="header--user1--img">
+            <?php 
+                echo "<strong id='username'>".$_SESSION["username"]."</strong>"; 
+            ?> 
             <a href="../logout.php"><input id="btn_logout" type="button" value="Đăng xuất"></a>
         </div>
     </header>
