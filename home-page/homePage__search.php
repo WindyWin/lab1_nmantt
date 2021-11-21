@@ -11,6 +11,7 @@
     $host_user = 'root';
     $host_password = '';
     $database = 'demo';
+    $keySearch = $_GET['search'];
     
     $conn = new mysqli($host, $host_user, $host_password, $database);
     if (!$conn) {
@@ -18,9 +19,13 @@
     }
     /* echo "Kết nối CSDL thành công"; */
 
-    $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME, TB_POSTS.ID_POSTS FROM TB_POSTS, TB_USER WHERE TB_POSTS.ID_USER = TB_USER.ID_USER";
+    $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME, TB_POSTS.ID_POSTS 
+            FROM TB_POSTS, TB_USER 
+            WHERE TB_POSTS.ID_USER = TB_USER.ID_USER
+            AND TB_POSTS.POST_NAME LIKE '%$keySearch%'
+            OR TB_USER.FIRSTNAME LIKE '%$keySearch%'
+            OR TB_USER.LASTNAME LIKE '%$keySearch%'";
     $kq = $conn->query($sql);
-    
 ?>
 
 
@@ -51,7 +56,7 @@
             <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
             <li><a href="../blogComment/blogComment.php">Đóng góp & ý kiến</a></li>
         </ul>
-        <form action="homePage__search.php" class="searchForm" method="GET">
+        <form action="homePage__search.php" class="searchForm">
             <input type="text" name="search" class="input__search" placeholder="Tìm tên bài viết, tác giả">
             <button>Search</button>
         </form>
