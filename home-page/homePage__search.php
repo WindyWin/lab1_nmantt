@@ -19,12 +19,14 @@
     }
     /* echo "Kết nối CSDL thành công"; */
 
-    $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT, TB_USER.FIRSTNAME, TB_USER.LASTNAME, TB_POSTS.ID_POSTS 
+    $sql = "SELECT TB_POSTS.POST_NAME, TB_POSTS.TIME, TB_POSTS.CONTENT, TB_USER.FIRSTNAME, 
+                    TB_USER.LASTNAME, TB_POSTS.ID_POSTS, CONCAT(TB_USER.FIRSTNAME, ' ' ,TB_USER.LASTNAME)
             FROM TB_POSTS, TB_USER 
             WHERE TB_POSTS.ID_USER = TB_USER.ID_USER
-            AND TB_POSTS.POST_NAME LIKE '%$keySearch%'
+            AND ( TB_POSTS.POST_NAME LIKE '%$keySearch%'
             OR TB_USER.FIRSTNAME LIKE '%$keySearch%'
-            OR TB_USER.LASTNAME LIKE '%$keySearch%'";
+            OR TB_USER.LASTNAME LIKE '%$keySearch%'
+            OR CONCAT(TB_USER.FIRSTNAME, ' ' ,TB_USER.LASTNAME) LIKE '%$keySearch%')";
     $kq = $conn->query($sql);
 ?>
 
