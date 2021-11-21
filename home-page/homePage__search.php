@@ -53,15 +53,15 @@
         <h1>UIBlog</h1>
     </header>
     <main>
+        <form action="homePage__search.php" class="searchForm">
+            <input type="text" name="search" class="input__search" placeholder="Tìm tên bài viết, tác giả">
+            <button>Search</button>
+        </form>
         <ul>
             <li> <strong><a href="./home-page.php">Trang chủ</a></strong></li>
             <li><a href="../myBlog/myBlog.php">Bài viết của tôi</a></li>
             <li><a href="../blogComment/blogComment.php">Đóng góp & ý kiến</a></li>
         </ul>
-        <form action="homePage__search.php" class="searchForm">
-            <input type="text" name="search" class="input__search" placeholder="Tìm tên bài viết, tác giả">
-            <button>Search</button>
-        </form>
         <?php while ($row = $kq->fetch_assoc()) {?>
             <div id="content">
                     <img class="content__avt" src="user2.svg" alt="user2">
